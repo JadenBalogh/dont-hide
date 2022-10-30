@@ -983,10 +983,12 @@ MonoBehaviour:
   oneOffSource: {fileID: 1340160976}
   startAmbience: {fileID: 8300000, guid: 4c9a8f1f3c73e424097fa6f0da3c3e16, type: 3}
   oneOffs:
-  - {fileID: 8300000, guid: d9c9e4287f0c9d44ab204a2f7539b82e, type: 3}
-  - {fileID: 8300000, guid: 496856df7077129469048364dd38c441, type: 3}
-  oneOffMinInterval: 4
-  oneOffMaxInterval: 10
+  - {fileID: 8300000, guid: 75a450c19d2daa9458c41e4b1d3f41c2, type: 3}
+  - {fileID: 8300000, guid: 0902cb3536d1cb9469d4f77e7b6b238c, type: 3}
+  - {fileID: 8300000, guid: 33e62fbe58209a94d8ed76618de8d37e, type: 3}
+  - {fileID: 8300000, guid: d72d24e4dbe08b140b5c1bdd42d89524, type: 3}
+  oneOffMinInterval: 10
+  oneOffMaxInterval: 20
 --- !u!82 &1340160979
 AudioSource:
   m_ObjectHideFlags: 0
