@@ -637,6 +637,8 @@ MonoBehaviour:
   moveSource: {fileID: 677882237}
   moveSounds: []
   footstepFrames: 
+  followDelay: 0.2
+  leaveDelay: 0.6
 --- !u!82 &677882239
 AudioSource:
   m_ObjectHideFlags: 0
@@ -875,7 +877,7 @@ MonoBehaviour:
   moveSource: {fileID: 1096383852}
   moveSounds: []
   footstepFrames: 
-  interactRadius: 1
+  interactRadius: 0.4
   interactLayer:
     serializedVersion: 2
     m_Bits: 64
