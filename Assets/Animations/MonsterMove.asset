@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83c84e9d2e33f94fb8da1a7ae5eccb2, type: 3}
+  m_Name: MonsterMove
+  m_EditorClassIdentifier: 
+  frameRate: 15
+  frames:
+  - {fileID: -1706922334, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: 29962660, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: 236479568, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: -1437872849, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: -1805512418, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: 470349358, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: 1996993450, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: 1477730734, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: 1944925641, guid: 1e39332e546000a4c877ff6209026957, type: 3}
+  - {fileID: 665919296, guid: 1e39332e546000a4c877ff6209026957, type: 3}

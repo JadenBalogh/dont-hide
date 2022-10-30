@@ -5,6 +5,7 @@ using UnityEngine;
 public class Animator2D : MonoBehaviour
 {
     private bool isLocked;
+    private Animation2D curr;
     private Animation2D prev;
 
     private Coroutine framesTimer;
@@ -32,6 +33,22 @@ public class Animator2D : MonoBehaviour
         PlayFrames(animation, looping);
     }
 
+    public int GetFrame()
+    {
+        int idx = 0;
+
+        foreach (Sprite frame in curr.Frames)
+        {
+            if (spriteRenderer.sprite == frame)
+            {
+                break;
+            }
+            idx++;
+        }
+
+        return idx;
+    }
+
     private void PlayFrames(Animation2D animation, bool looping)
     {
         if (framesTimer != null) StopCoroutine(framesTimer);
@@ -45,6 +62,8 @@ public class Animator2D : MonoBehaviour
             Debug.LogError("ERROR: Animation either has no frames or 0 frame rate!");
             yield break;
         }
+
+        curr = animation;
 
         WaitForSeconds frameDelay = new WaitForSeconds(1f / animation.FrameRate);
         while (true)
