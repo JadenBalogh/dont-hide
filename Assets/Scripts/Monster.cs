@@ -6,9 +6,21 @@ public class Monster : Actor
 {
     [SerializeField] private float followDelay = 0.2f;
     [SerializeField] private float leaveDelay = 0.6f;
+    [SerializeField] protected AudioSource screechSource;
 
     private Vector3 targetDir;
     private Coroutine leaveCR;
+    private bool isColliding = false;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        if (!GameManager.Player.IsHidden)
+        {
+            screechSource.Play();
+        }
+    }
 
     protected void Update()
     {
@@ -20,29 +32,48 @@ public class Monster : Actor
             {
                 StopCoroutine(leaveCR);
                 leaveCR = null;
-                Debug.Log("Stopping!!");
+                screechSource.Play();
             }
             targetDir = player.transform.position - transform.position;
         }
         else
         {
-            if (leaveCR == null) leaveCR = StartCoroutine(LeaveCR());
+            if (leaveCR == null)
+            {
+                leaveCR = StartCoroutine(LeaveCR());
+            }
         }
 
-        rigidbody2D.velocity = targetDir.normalized * moveSpeed;
+        Vector3 shiftDir = Vector3.zero;
+
+        if (isColliding)
+        {
+            shiftDir = Vector2.Perpendicular(targetDir).normalized;
+        }
+
+        rigidbody2D.velocity = (shiftDir + targetDir.normalized) * moveSpeed;
 
         UpdateAnims(true);
     }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        isColliding = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        isColliding = false;
+    }
+
     private IEnumerator LeaveCR()
     {
-        Debug.Log("Starting!!");
-
         Player player = GameManager.Player;
 
         yield return new WaitForSeconds(followDelay);
 
         targetDir = Vector3.zero;
+        screechSource.Stop();
 
         yield return new WaitForSeconds(leaveDelay);
 
