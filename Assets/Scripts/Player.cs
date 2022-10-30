@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     private new Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
     private Animator2D animator2D;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator2D = GetComponent<Animator2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -41,7 +43,9 @@ public class Player : MonoBehaviour
         Vector2 movement = new Vector2(moveX, moveY).normalized;
         rigidbody2D.velocity = movement * moveSpeed;
 
-        if (movement != Vector2.zero)
+        bool isMoving = movement != Vector2.zero;
+
+        if (isMoving)
         {
             animator2D.Play(moveAnim, true);
             spriteRenderer.flipX = rigidbody2D.velocity.x > 0;
@@ -50,6 +54,8 @@ public class Player : MonoBehaviour
         {
             animator2D.Play(idleAnim, true);
         }
+
+        audioSource.mute = !isMoving;
 
         UpdateInteractables();
     }
