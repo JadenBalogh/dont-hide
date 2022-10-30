@@ -6,10 +6,19 @@ public class Monster : Actor
 {
     protected void Update()
     {
-        Vector3 playerPos = GameManager.Player.transform.position;
+        Player player = GameManager.Player;
+        Vector3 targetDir;
 
-        Vector2 movement = (playerPos - transform.position).normalized;
-        rigidbody2D.velocity = movement * moveSpeed;
+        if (!player.IsHidden)
+        {
+            targetDir = player.transform.position - transform.position;
+        }
+        else
+        {
+            targetDir = transform.position - player.transform.position;
+        }
+
+        rigidbody2D.velocity = targetDir.normalized * moveSpeed;
 
         UpdateAnims(true);
     }
