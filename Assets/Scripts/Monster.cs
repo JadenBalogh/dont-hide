@@ -59,6 +59,12 @@ public class Monster : Actor
     private void OnCollisionEnter2D(Collision2D col)
     {
         isColliding = true;
+
+        if (col.gameObject.TryGetComponent<Player>(out Player player))
+        {
+            CameraController.Jumpscare();
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D col)

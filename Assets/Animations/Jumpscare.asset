@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83c84e9d2e33f94fb8da1a7ae5eccb2, type: 3}
+  m_Name: Jumpscare
+  m_EditorClassIdentifier: 
+  frameRate: 33
+  frames:
+  - {fileID: 1618221062, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: 786617920, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: -457166196, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: -1225685709, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: 869803796, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: 617433904, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: 1665501302, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: 1913721156, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: 1503266157, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: -1104021800, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
+  - {fileID: -2120521869, guid: 1440e6defe2fc1c4a80d7dc82bc476a6, type: 3}
