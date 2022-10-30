@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Animator2D : MonoBehaviour
 {
+    public UnityEvent OnFrameChanged { get; private set; }
+
     private bool isLocked;
     private Animation2D curr;
     private Animation2D prev;
@@ -14,6 +17,8 @@ public class Animator2D : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        OnFrameChanged = new UnityEvent();
     }
 
     public void Play(Animation2D animation, bool looping, bool reset = false)
@@ -71,6 +76,7 @@ public class Animator2D : MonoBehaviour
             foreach (Sprite frame in animation.Frames)
             {
                 spriteRenderer.sprite = frame;
+                OnFrameChanged.Invoke();
                 yield return frameDelay;
             }
             if (!looping) break;

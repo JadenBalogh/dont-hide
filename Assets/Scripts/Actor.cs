@@ -23,6 +23,11 @@ public class Actor : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    protected virtual void Start()
+    {
+        animator2D.OnFrameChanged.AddListener(UpdateFootsteps);
+    }
+
     protected void UpdateAnims(bool isMoving)
     {
         if (isMoving)
@@ -34,8 +39,6 @@ public class Actor : MonoBehaviour
         {
             animator2D.Play(idleAnim, true);
         }
-
-        UpdateFootsteps();
     }
 
     protected void UpdateFootsteps()
