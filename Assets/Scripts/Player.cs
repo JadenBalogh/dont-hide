@@ -8,6 +8,8 @@ public class Player : Actor
     [SerializeField] private LayerMask interactLayer;
     [SerializeField] private Color hideColor;
 
+    public bool IsHidden { get; private set; }
+
     private Interactable currInteractable = null;
     private bool canMove = true;
 
@@ -61,6 +63,7 @@ public class Player : Actor
 
     public void SetHiding(bool hiding)
     {
+        IsHidden = hiding;
         spriteRenderer.color = hiding ? hideColor : Color.white;
         canMove = !hiding;
     }
