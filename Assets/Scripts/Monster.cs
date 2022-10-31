@@ -11,6 +11,7 @@ public class Monster : Actor
     private Vector3 targetDir;
     private Coroutine leaveCR;
     private bool isColliding = false;
+    private Vector2 collisionNormal;
 
     protected override void Start()
     {
@@ -48,10 +49,10 @@ public class Monster : Actor
 
         if (isColliding)
         {
-            shiftDir = Vector2.Perpendicular(targetDir).normalized;
+            shiftDir = Vector2.Perpendicular(collisionNormal).normalized;
         }
 
-        rigidbody2D.velocity = (shiftDir + targetDir.normalized) * moveSpeed;
+        rigidbody2D.velocity = (shiftDir + targetDir.normalized).normalized * moveSpeed;
 
         UpdateAnims(true);
     }
@@ -59,11 +60,14 @@ public class Monster : Actor
     private void OnCollisionEnter2D(Collision2D col)
     {
         isColliding = true;
+        collisionNormal = col.contacts[0].normal;
 
         if (col.gameObject.TryGetComponent<Player>(out Player player))
         {
+            player.SetSanity(1f);
             CameraController.Jumpscare();
-            Destroy(gameObject);
+            GameManager.DestroyMonsters();
+            GameManager.SpawnSystem.CancelSpawns();
         }
     }
 

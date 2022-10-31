@@ -14,6 +14,8 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] private float oneOffMinInterval = 4f;
     [SerializeField] private float oneOffMaxInterval = 10f;
 
+    private float oneOffMult = 1f;
+
     private void Awake()
     {
         if (instance != null)
@@ -41,7 +43,7 @@ public class MusicPlayer : MonoBehaviour
             AudioClip oneOff = oneOffs[Random.Range(0, oneOffs.Length)];
             oneOffSource.PlayOneShot(oneOff);
 
-            float interval = Random.Range(oneOffMinInterval, oneOffMaxInterval);
+            float interval = Random.Range(oneOffMinInterval, oneOffMaxInterval) * oneOffMult;
             yield return new WaitForSeconds(interval);
         }
     }
@@ -50,5 +52,10 @@ public class MusicPlayer : MonoBehaviour
     {
         instance.ambientSource.clip = ambience;
         instance.ambientSource.Play();
+    }
+
+    public static void SetOneOffMult(float mult)
+    {
+        instance.oneOffMult = mult;
     }
 }

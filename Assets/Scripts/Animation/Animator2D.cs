@@ -38,6 +38,11 @@ public class Animator2D : MonoBehaviour
         PlayFrames(animation, looping);
     }
 
+    public Animation2D GetCurrAnim()
+    {
+        return curr;
+    }
+
     public int GetFrame()
     {
         int idx = 0;

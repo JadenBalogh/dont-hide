@@ -12,6 +12,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private AudioClip jumpscareClip;
     [SerializeField] private float jumpscareTime = 0.25f;
     [SerializeField] private AudioSource jumpscareSource;
+    [SerializeField] private ParticleSystem fogFX;
+    [SerializeField] private CanvasGroup endText;
 
     private Vector2 currVel;
 
@@ -31,9 +33,23 @@ public class CameraController : MonoBehaviour
         instance.StartCoroutine(instance.JumpscareCR());
     }
 
+    public static void SetFogActive(bool active)
+    {
+        CameraController instance = Camera.main.GetComponent<CameraController>();
+        if (active)
+        {
+            instance.fogFX.Play();
+        }
+        else
+        {
+            instance.fogFX.Stop();
+        }
+    }
+
     private IEnumerator JumpscareCR()
     {
         yield return new WaitForSeconds(jumpscareTime);
         jumpscareImg.GetComponent<SpriteRenderer>().enabled = false;
+        endText.alpha = 1f;
     }
 }

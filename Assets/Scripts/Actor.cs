@@ -43,6 +43,11 @@ public class Actor : MonoBehaviour
 
     protected void UpdateFootsteps()
     {
+        if (animator2D.GetCurrAnim() != moveAnim)
+        {
+            return;
+        }
+
         foreach (int frame in footstepFrames)
         {
             if (frame == animator2D.GetFrame())
